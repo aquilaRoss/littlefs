@@ -1,0 +1,22 @@
+name: Zephyr module version
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # The check walks history to find which upstream release is merged.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check package URL matches merged littlefs release
+        run: python3 zephyr/check_module_version.py

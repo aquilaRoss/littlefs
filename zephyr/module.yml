@@ -2,3 +2,6 @@ name: littlefs
 build:
   cmake-ext: True
   kconfig-ext: True
+security:
+  external-references:
+    - pkg:github/littlefs-project/littlefs@v2.11.3
